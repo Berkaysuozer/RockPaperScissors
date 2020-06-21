@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body{
+background: white;
+}
+#liste img{
+border:1px solid black
+}
+#sonuc{
+float:left;
+width: 300px;
+height: 300px;
+font-size:50px;
+background: white;
+}
+#pc-sonuc{
+float:left;
+}
+
+</style>
+</head>
+<body>
+
+<div id="liste">
+    <img src="kagit.png" id="kagit" width="300" height="300" data-id="0">
+    <img src="makas.png" id="makas" width="300" height="300" data-id="1">
+    <img src="tas.png" id="tas" width="300" height="300" data-id="2">
+</div>
+<div id="pc-sonuc">
+    <img src="" id="randomtaskagıtmakas" width="300" height="300" >
+</div>
+   <div id="sonuc" width ="300" height="300">
+</div>
+<div id ="logoo">
+  <img  src="dpu.png" id ="logo"  width="300" height="300" style ="margin-left:45px"  >
+</div>
+
+
+<script>
+var liste=["kagit.png","makas.png","tas.png"];
+var kagit=document.getElementById("kagit");
+var makas=document.getElementById("makas");
+var tas=document.getElementById("tas");
+var bilgisayarınSecimi=document.getElementById("randomtaskagıtmakas");
+var sonucc=document.getElementById("sonuc");
+
+
+kagit.onclick=secimYap;
+makas.onclick=secimYap;
+tas.onclick=secimYap;
+
+
+function secimYap(){
+var pc= RasgeleKagit();
+
+
+var KullanıcıSecim= this.dataset.id;
+if(pc==0 && KullanıcıSecim==0){
+sonuc="Berabere kaldınız , seçimleriniz aynı";
+}
+else if(pc==0 && KullanıcıSecim==1){
+sonuc="Kazandın, Makas kâğıda karşı üstündür.";
+}
+else if(pc==0 && KullanıcıSecim==2){
+sonuc="Kaybettin, Kâğıt Taşa karşı üstündür.";
+}
+else if(pc==1 && KullanıcıSecim==0){
+sonuc="Kaybettin,Makas kâğıda karşı üstündür.";
+}
+else if(pc==1 && KullanıcıSecim==1){
+sonuc="Berabere kaldınız , seçimleriniz aynı";
+}
+else if(pc==1 && KullanıcıSecim==2){
+sonuc="Kazandın,Taş Makas karşı üstündür.";
+}
+else if(pc==2 && KullanıcıSecim==0){
+sonuc="Kazandın, Kâğıt Taşa karşı üstündür.";
+}
+else if(pc==2 && KullanıcıSecim==1){
+sonuc="Kaybettin, Taş Makas karşı üstündür.";
+}
+else if(pc==2 && KullanıcıSecim==2){
+sonuc="Berabere kaldınız , seçimleriniz aynı";
+}
+
+sonucc.innerHTML=sonuc;
+}
+
+function RasgeleKagit(){
+var sayi= Math.round(Math.random()*2);
+bilgisayarınSecimi.src=liste[sayi];
+
+return sayi;
+}
+
+</script>
+</body>
+</html>
